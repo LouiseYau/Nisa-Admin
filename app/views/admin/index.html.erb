@@ -1,0 +1,72 @@
+<h1>Subscription Admin</h1>
+
+<div class="subs index">
+  <h2>Subscribers</h2>
+
+  <%= link_to("Add New Subscribers", {:action => 'new'}, :class => 'action new') %> <br/>
+  <%# <%= link_to("subscribers who have already been emailed", {:action => 'new_sign_ups'}, :class => 'action new_sign_ups') %> 
+
+  <table class="listing" summary="Subs list">
+    <tr class="header">
+      <%# <%<th>&nbsp;</th> %>  
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Sent</th>
+    </tr>
+    <% @sub.each do |sub| %>
+    <tr>
+      <td><%= sub.first_name %></td>
+      <td><%= sub.last_name %></td>
+      <td class="center"><%= sub.email %></td>
+      <td class="center"><%= sub.sent ? 'Yes' : 'No' %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => sub.id}, :class => 'action show') %>
+        <%= link_to("edit", {:action => 'edit',:id =>sub.id}, :class => 'action edit') %>
+        <%= link_to("Delete", '#', :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<div>
+<h2>Send Subscription Email</h2>
+<h3>All subscribers who have not received a subscription email</h3>
+ <table class="listing" summary="Subs list">
+    <tr class="header">
+      <%# <%<th>&nbsp;</th> %>  
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Sent</th>
+    </tr>
+
+    <% @new.each do |sub| %>
+    <%# <% if sub.sent == false %>
+        <tr>
+        <td><%= sub.first_name %></td>
+        <td><%= sub.last_name %></td>
+        <td class="center"><%= sub.email %></td>
+        <td class="center"><%= sub.sent ? 'Yes' : 'No' %></td>
+        <td class="actions">
+            <%= link_to("Show", {:action => 'show', :id => sub.id}, :class => 'action show') %>
+            <%= link_to("Edit", {:action => 'edit',:id =>sub.id}, :class => 'action edit') %>
+            <%= link_to("Delete", '#', :class => 'action delete') %>
+        </td>
+        </tr>
+    
+    <%# <% end %>
+    <% end %>
+  </table>
+
+
+<%= button_to "Send", action: @send %>
+
+</br>
+<h1>Add New Product</h1>
+
+<%= link_to 'New Product', new_product_path %>
+
+
+</div>

@@ -1,0 +1,32 @@
+<h1>Subscribe</h1>
+<p>Plan is: <%= params[:plan] %></p>
+<hr/>
+  <%= form_tag subscriptions_path, id: "payment-form" do |form| %>
+
+    <div class="field">
+
+      <label class="label" for="card-element">
+        Enter credit or debit card
+      </label>
+
+      <%# <div id="card-number"></div>
+      <div id="card-expiry"></div>
+      <div id="card-cvc"></div> %>
+
+      <div id="card-element">
+        <!-- A Stripe Element will be inserted here. -->
+      </div>
+
+      <!-- Used to display Element errors. -->
+      <div id="card-errors" role="alert"></div>
+
+      <%= hidden_field_tag :plan_id, params[:plan_id] %>
+    
+        <br/><br/>
+    <button class="button is-fullwidth is-link mt4">Submit</button>
+
+    <p>Plan is: <%= params[:plan] %></p>
+    <p>Plan is: <%= params[:plan_id] %></p>
+  </div>
+
+<% end %>

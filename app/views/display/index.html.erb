@@ -1,0 +1,49 @@
+<h1>Display</h1>
+<p>Click below to subscribe to a subscription. --> pay with stripe.</p>
+<% final_selection = ""%>
+<% if user_signed_in? %>
+    <p>Account: <%= current_user.email %></p>
+
+
+
+
+<p>Select your cut:</p>
+   <%= check_box(:Sabrina,{:id => "Sabrina",:value => "Sabrina"}) %>
+   <p>Sabrina</p>
+   <%= check_box(:Quinn,{:id => "Quinn",:value => "Quinn"}) %>
+   <p>Quinn</p>
+   <%= check_box(:Ada,{:id => "Ada",:value => "Ada"}) %>
+   <p>Ada</p>
+
+   <br/><br/>
+
+   <p>Select your size:</p>
+   <%= check_box(:small,{:id => "small",:value => "small"}) %>
+   <p>Small</p>
+   <%= check_box(:medium,{:id => "medium",:value => "medium"}) %>
+   <p>Medium</p>
+   <%= check_box(:large,{:id => "large",:value => "large"}) %>
+   <p>Large</p>
+
+   <br/><br/>
+
+   <p>Select your preferred colours (up to three):</p>
+   <%= check_box(:yellow,{:id => "yellow",:value => "yellow"}) %>
+   <p>Yellow</p>
+   <%= check_box(:medium,{:id => "medium",:value => "medium"}) %>
+   <p>Medium</p>
+   <%= check_box(:large,{:id => "large",:value => "large"}) %>
+   <p>Large</p>
+
+<br/><br/>
+
+
+
+    <%= link_to 'Sabrina', new_subscription_path(plan: "sabrina", plan_id: Rails.application.credentials.sabrina), class:"btn btn-primary" %>
+    <br/><br/>
+    <%= link_to 'Quinn', new_subscription_path(plan: "quinn", plan_id: Rails.application.credentials.quinn), class:"btn btn-primary" %>
+    <br/><br/>
+    <%= link_to 'Ada', new_subscription_path(plan: "ada", plan_id: Rails.application.credentials.ada), class:"btn btn-primary" %>
+<% else %>
+    <%= link_to 'Subscribe', new_user_registration_path, class:"btn btn-primary" %>
+<% end %>

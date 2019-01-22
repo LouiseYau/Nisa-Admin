@@ -1,0 +1,29 @@
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="subs new">
+  <h2>Add New Subscriber</h2>
+
+  <%= form_for(:sub, :url => {:action => 'create'}) do |f| %>
+
+    <table summary="Subs form fields">
+      <tr>
+        <th>First Name</th>
+        <td><%= f.text_field(:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= f.text_field(:last_name) %></td>
+      </tr>
+      
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+      </tr>
+     
+    </table>
+
+    <div class="form-buttons">
+      <%= submit_tag("Add Subscriber") %>
+    </div>
+
+  <% end %>
+</div>
